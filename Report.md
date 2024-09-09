@@ -1,3 +1,8 @@
 Exercise 1:
-Max value was 15315. 
-Min value was 
+max_bright value was 15315. 
+min_bright value was 1824.
+
+Exercise 2:
+
+Exercise 3:
+
