@@ -8,7 +8,7 @@ import random
 import json
 
 
-N: int = 3
+N: int = 10
 sample_ms = 10.0
 on_ms = 500
 
@@ -51,13 +51,30 @@ def scorer(t: list[int | None]) -> None:
     print(f"You missed the light {misses} / {len(t)} times")
 
     t_good = [x for x in t if x is not None]
+    
+    if t_good:
+        avg_response = sum(t_good) / len(t_good)
+        min_response = min(t_good)
+        max_response = max(t_good)
+    else:
+        avg_response = min_response = max_response = None
 
+    print(f"Average response time: {avg_response} ms")
+    print(f"Minimum response time: {min_response} ms")
+    print(f"Maximum response time: {max_response} ms")
     print(t_good)
 
     # add key, value to this dict to store the minimum, maximum, average response time
     # and score (non-misses / total flashes) i.e. the score a floating point number
     # is in range [0..1]
-    data = {}
+    data = {
+        "misses": misses,
+        "average_response_time": avg_response,
+        "min_response_time": min_response,
+        "max_response_time": max_response,
+        "score": score
+        }
+    return data
 
     # %% make dynamic filename and write JSON
 
@@ -99,4 +116,4 @@ if __name__ == "__main__":
 
     blinker(5, led)
 
-    scorer(t)
+    data = scorer(t)
