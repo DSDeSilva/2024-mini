@@ -30,10 +30,55 @@ duration: float = 0.1  # seconds
 
 print("Playing frequency (Hz):")
 
-for i in range(64):
-    print(freq)
-    playtone(freq, duration)
-    freq = int(freq * 1.1)
+# Twinkle Twinkle Little Star
+
+playtone(523, .3)  # C
+playtone(523, .3)  # C
+playtone(783, .3)  # G
+playtone(783, .3)  # G
+playtone(880, .3)  # A
+playtone(880, .3)  # A
+playtone(783, .6)  # G
+
+playtone(698, .3)  # F
+playtone(698, .3)  # F
+playtone(659, .3)  # E
+playtone(659, .3)  # E
+playtone(587, .3)  # D
+playtone(587, .3)  # D
+playtone(523, .6)  # C
+
+playtone(783, .3)  # G
+playtone(783, .3)  # G
+playtone(698, .3)  # F
+playtone(698, .3)  # F
+playtone(659, .3)  # E
+playtone(659, .3)  # E
+playtone(587, .6)  # D
+
+playtone(783, .3)  # G
+playtone(783, .3)  # G
+playtone(698, .3)  # F
+playtone(698, .3)  # F
+playtone(659, .3)  # E
+playtone(659, .3)  # E
+playtone(587, .6)  # D
+
+playtone(523, .3)  # C
+playtone(523, .3)  # C
+playtone(783, .3)  # G
+playtone(783, .3)  # G
+playtone(880, .3)  # A
+playtone(880, .3)  # A
+playtone(783, .6)  # G
+
+playtone(698, .3)  # F
+playtone(698, .3)  # F
+playtone(659, .3)  # E
+playtone(659, .3)  # E
+playtone(587, .3)  # D
+playtone(587, .3)  # D
+playtone(523, .6)  # C
 
 # Turn off the PWM
 quiet()
