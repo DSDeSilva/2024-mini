@@ -2,6 +2,8 @@
 
 This assignment uses the Raspberry Pi Pico WH as handed out in class.
 
+test
+
 Each student team, please fork this "2024-mini" repository.
 Then `git clone` your forked repository to your local machine as you write your code and results.
 The **final submission will be a link to your forked GitHub repository** containing your code and JSON files as specified in the exercises below.
