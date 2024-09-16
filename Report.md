@@ -1,10 +1,11 @@
 Exercise 1:
-max_bright value was 15315. 
+max_bright value was 5315. 
 min_bright value was 22485.
 
 Exercise 2:
 
 Exercise 3:
+Part 1:
 You missed the light 2 / 10 times
 Average response time: 263.375 ms
 Minimum response time: 229 ms
