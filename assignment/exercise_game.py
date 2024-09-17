@@ -7,12 +7,13 @@ import urequests  # MicroPython's requests library to send HTTP requests
 import network
 
 
-N: int = 3  # Now we do 10 flashes
+
+N: int = 10  # Now we do 10 flashes
 sample_ms = 10.0
 on_ms = 500
 
-SSID = "Verizon_9CCFV4"
-Password = "bacon4-eyry-van"
+SSID = "Laptop"
+Password = "password"
 Key = "2A8W6P3T1W5WGJ6Z"
 ThingspeakURL = "http://api.thingspeak.com/update"
 
@@ -32,28 +33,17 @@ def wifi():
         time.sleep(1)
     print("Connected to:", wlan.ifconfig())
     
-def test_upload():
+def upload(AvgR, MinR, MaxR,status_message,score):
     try:
-        url = f"{ThingspeakURL}?api_key={Key}&field1=223.0"
+        url = f"{ThingspeakURL}?api_key={Key}&field1={AvgR}&field2={MinR}&field3={MaxR}&status={status_message}&field4={score}"
         print(f"Constructed URL: {url}")  # Debugging
         response = urequests.get(url)
         print(f"Response from ThingSpeak: {response.text}")
         response.close()
     except Exception as e:
         print(f"Error sending data to ThingSpeak: {e}")
-    
-def upload(AvgR, MinR, MaxR):
-    try:
-        url = f"{ThingspeakURL}?api_key={Key}&field1={AvgR}&field2={MinR}&field3={MaxR}"
-        print(f"Constructed URL: {url}")  # Debugging
-        response = urequests.get(url)
-        print(f"Response from ThingSpeak: {response.text}")
-        response.close()
-    except Exception as e:
-        print(f"Error sending data to ThingSpeak: {e}")
+
         
-
-
 def random_time_interval(tmin: float, tmax: float) -> float:
     """return a random time interval between max and min"""
     return random.uniform(tmin, tmax)
@@ -100,8 +90,9 @@ def scorer(t: list[int | None]) -> dict:
         "max_response_time": max_response,
         "score": len(t_good) / len(t)  # Score: non-misses / total flashes
     }
+    score = len(t_good) / len(t)
 
-    return avg_response, min_response, max_response
+    return avg_response, min_response, max_response, data, score
 
 
 '''def upload_data(data: dict) -> None:
@@ -149,7 +140,7 @@ if __name__ == "__main__":
     blinker(5, led)
 
     # Calculate results
-    avg_response, min_response, max_response = scorer(t)
+    avg_response, min_response, max_response, data, score = scorer(t)
 
     '''# Save results to a JSON file
     now: tuple[int] = time.localtime()
@@ -158,7 +149,8 @@ if __name__ == "__main__":
     write_json(filename, data)'''
 
     # Upload the data to your server
-    print("testtestest: ", avg_response)
+    #print("testtestest: ", avg_response)
     #test_upload()
-    upload(avg_response, min_response, max_response)
+    msg = f"Avgerage%20Response%20Time:%20{avg_response}%0AMinimum%20Response%20Time:%20{min_response}%0AMaximum%20Response%20Time:%20{max_response}%20Score:%20{score}"
+    upload(avg_response, min_response, max_response,msg,score)
 
