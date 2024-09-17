@@ -18,4 +18,13 @@ Part 2:
 
 This game requires the user to hit the button after the LED flashes. We modified the code so that the game is 10 flashes instead of 3. We also wrote code to upload the game data (user's results) to an online server. To do this, we also had to add code that connected the raspberry pi to the user's laptop hotspot. We chose to use ThingSpeak as our online server as it offers some nice visualization tools which we utilized to display our data, as shown by the screenshots below. 
 
+User Story:
+I'd like to play a game to see how fast my reaction time is.
+I'd like to know what my minimum, maximum, and average reaction times are based on the game. 
+I'd like this data to be uploaded to the cloud so it's all in one place.
+I can see my game data in the cloud now. 
+
+
+
+
 
