@@ -1,6 +1,7 @@
 Exercise 1:
 max_bright value was 5315. 
 min_bright value was 22485.
+
 Link to video: https://drive.google.com/file/d/1koZ0HB-eb_8GvynHe13del5k4AM8jvNK/view?usp=sharing
 
 Exercise 2:
