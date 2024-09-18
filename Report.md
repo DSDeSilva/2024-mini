@@ -7,11 +7,12 @@ Link to video: https://drive.google.com/file/d/1koZ0HB-eb_8GvynHe13del5k4AM8jvNK
 Exercise 2:
 We modified the code to play the song, "Twinkle Twinkle Little Star".
 
-Link to video: https://drive.google.com/file/d/1yDxMBZQe8R8yLuedNTTwV21n41Yl58lh/view?usp=sharing
+Link to video: https://drive.google.com/file/d/1kgeczB3xLzqkoC-t3Thr0vll2ygrB_zy/view?usp=sharing
 
 Exercise 3:
 
-Link to video: https://drive.google.com/file/d/1kgeczB3xLzqkoC-t3Thr0vll2ygrB_zy/view?usp=sharing
+Link to video: https://drive.google.com/file/d/1yDxMBZQe8R8yLuedNTTwV21n41Yl58lh/view?usp=sharing
+
 
 Part 1:
 You missed the light 2 / 10 times
