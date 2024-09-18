@@ -12,9 +12,9 @@ N: int = 10  # Now we do 10 flashes
 sample_ms = 10.0
 on_ms = 500
 
-SSID = "Laptop"
+SSID = "Laptop" #laptop hotspot was used
 Password = "password"
-Key = "2A8W6P3T1W5WGJ6Z"
+Key = "2A8W6P3T1W5WGJ6Z"  #thingspeak apikey and url
 ThingspeakURL = "http://api.thingspeak.com/update"
 
 def wifi():
@@ -27,7 +27,7 @@ def wifi():
     while not wlan.isconnected():
         elapsed_time = time.time() - start_time
         if elapsed_time > timeout:
-            print("Connection failed")
+            print("Failed to Connect to Wifi")
             return
         print("Connecting...")
         time.sleep(1)
@@ -35,10 +35,10 @@ def wifi():
     
 def upload(AvgR, MinR, MaxR,status_message,score):
     try:
-        url = f"{ThingspeakURL}?api_key={Key}&field1={AvgR}&field2={MinR}&field3={MaxR}&status={status_message}&field4={score}"
-        print(f"Constructed URL: {url}")  # Debugging
+        url = f"{ThingspeakURL}?api_key={Key}&field1={AvgR}&field2={MinR}&field3={MaxR}&status={status_message}&field4={score}" #updates the recorded data to the respective fields that can be seen on thingspeak
+        print(f"Constructed URL: {url}")  #constructed url 
         response = urequests.get(url)
-        print(f"Response from ThingSpeak: {response.text}")
+        print(f"Response from ThingSpeak: {response.text}") #response from thingspeak -2 mean fail to upload 1-n success
         response.close()
     except Exception as e:
         print(f"Error sending data to ThingSpeak: {e}")
@@ -83,30 +83,9 @@ def scorer(t: list[int | None]) -> dict:
     print(f"Maximum response time: {max_response} ms")
 
     # Store the results in a dictionary
-    data = {
-        "misses": misses,
-        "average_response_time": avg_response,
-        "min_response_time": min_response,
-        "max_response_time": max_response,
-        "score": len(t_good) / len(t)  # Score: non-misses / total flashes
-    }
     score = len(t_good) / len(t)
 
     return avg_response, min_response, max_response, data, score
-
-
-'''def upload_data(data: dict) -> None:
-    """Uploads the result to the Node.js server."""
-    
-    url = "http://10.193.85.151:3000/upload"  # Use your Node.js server IP and port
-    headers = {'Content-Type': 'application/json'}
-    
-    try:
-        response = urequests.post(url, data=json.dumps(data), headers=headers)
-        print("Data uploaded successfully:", response.text)
-    except Exception as e:
-        print("Failed to upload data:", e)'''
-
 
 if __name__ == "__main__":
     # Initialize the LED and button
@@ -149,8 +128,7 @@ if __name__ == "__main__":
     write_json(filename, data)'''
 
     # Upload the data to your server
-    #print("testtestest: ", avg_response)
-    #test_upload()
-    msg = f"Avgerage%20Response%20Time:%20{avg_response}%0AMinimum%20Response%20Time:%20{min_response}%0AMaximum%20Response%20Time:%20{max_response}%20Score:%20{score}"
+
+    msg = f"Avgerage%20Response%20Time:%20{avg_response}%0AMinimum%20Response%20Time:%20{min_response}%0AMaximum%20Response%20Time:%20{max_response}%20Score:%20{score}" #message sent to status field in url friendly format
     upload(avg_response, min_response, max_response,msg,score)
 
